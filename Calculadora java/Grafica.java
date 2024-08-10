@@ -10,6 +10,9 @@ public class Grafica extends JFrame{
 
     private JPanel panel; 
     private JPanel buttonPanel;
+    private String operator = "";
+    private double PrimeOperand;
+    private boolean isOperatorSelected = false;
     private JButton[] buttons;
     private JTextField screen;
     private String[] buttonLabels = {
@@ -94,9 +97,48 @@ public class Grafica extends JFrame{
         for(int n = 0; n < condition.length ; n++){
             buttons[n] = new JButton(condition[n]);
             buttons[n].addActionListener(new ActionListener() {
-
                 @Override
                 public void actionPerformed(ActionEvent e) {
+                    JButton hold_down = (JButton) e.getSource();
+                    String text = hold_down.getText();
+                    
+                    if("0123456789.".contains(text)){
+                        if(isOperatorSelected){
+                            screen.setText("");
+                            isOperatorSelected = false;
+                        }
+                        screen.setText(screen.getText() + text);
+                    }else if(text.equals("=")){
+                        double resultado = 0;
+                        double SecoundOperator = Double.parseDouble(screen.getText());
+
+                        switch (operator) {
+                            case "+":   
+                                resultado = Funciones.additon(PrimeOperand,SecoundOperator);
+                                break;
+                            case "-":
+                                resultado = Funciones.remaind(PrimeOperand,SecoundOperator);
+                                break;
+                            case "*":
+                                resultado = Funciones.multiply(PrimeOperand, SecoundOperator);
+                                break;
+                            case "/":
+                                resultado = Funciones.split(PrimeOperand, SecoundOperator);
+                                break;
+                            default:
+                                screen.setText("Error");
+                                return;
+                        }
+                        screen.setText(String.valueOf(resultado));
+                        operator = "";
+
+                    }else if(text.equals("sin")){
+                        screen.setText(String.valueOf(Funciones.Sen(Double.parseDouble(screen.getText()))));
+                    } else if("+-*/".contains(text)){
+                            operator = text;
+                            PrimeOperand = Double.parseDouble(screen.getText());
+                            isOperatorSelected = true;
+                        }
                    
                 }
             });

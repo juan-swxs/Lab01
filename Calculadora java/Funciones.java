@@ -9,10 +9,6 @@ public class Funciones{
         return x - y;
     }
 
-    public static Double multiply(Double x, Double y){
-        return x * y;
-    }
-
     public static Double split(Double x, Double y){
         return x/y;
     }
