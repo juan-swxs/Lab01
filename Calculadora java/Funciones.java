@@ -17,8 +17,8 @@ public class Funciones{
         return x/y;
     }
 
-    public static Double Power(Double x){
-        return Math.pow(x, 2);
+    public static Double Power(Double x, Double y){
+        return Math.pow(x,y);
     }
     
     public static Double Sen(Double x){
@@ -49,5 +49,13 @@ public class Funciones{
 
     public static Double Antsen(Double x){
         return Math.asin(x);
+    }
+
+    public static Double Antcon(Double x){
+        return Math.acos(x);
+    }
+
+    public static Double AntTangh(Double x){
+        return Math.atan(x);
     }
 }

@@ -18,7 +18,7 @@ public class Grafica extends JFrame{
     private String[] buttonLabels = {
         "7", "8", "9", "AC", 
         "4", "5", "6", "*", 
-        "1", "2", "3", "-", 
+        "1", "2", "3", "-",
         "0", "/", "=", "+"
     };
     private String[] buttonMetric = {
@@ -101,61 +101,71 @@ public class Grafica extends JFrame{
                 public void actionPerformed(ActionEvent e) {
                     JButton hold_down = (JButton) e.getSource();
                     String text = hold_down.getText();
-                    
-                    if("0123456789.".contains(text)){
-                        if(isOperatorSelected){
+                    try{
+                        if("0123456789.".contains(text)){
+                            if(isOperatorSelected){
+                                screen.setText("");
+                                isOperatorSelected = false;
+                            }
+                            screen.setText(screen.getText() + text);
+    
+                        }else if(text.equals("AC")){
                             screen.setText("");
+                            operator = "";
+                            PrimeOperand = 0;
                             isOperatorSelected = false;
-                        }
-                        screen.setText(screen.getText() + text);
-
-                    }else if(text.equals("AC")){
-                        screen.setText("");
-                        operator = "";
-                        PrimeOperand = 0;
-                        isOperatorSelected = false;
-
-                    }else if(text.equals("=")){
-                        double resultado = 0;
-                        double SecoundOperator = Double.parseDouble(screen.getText());
-
-                        switch (operator) {
-                            case "+":   
-                                resultado = Funciones.additon(PrimeOperand,SecoundOperator);
-                                break;
-                            case "-":
-                                resultado = Funciones.remaind(PrimeOperand,SecoundOperator);
-                                break;
-                            case "*":
-                                resultado = Funciones.multiply(PrimeOperand, SecoundOperator);
-                                break;
-                            case "/":
-                                resultado = Funciones.split(PrimeOperand, SecoundOperator);
-                                break;
-                            default:
-                                screen.setText("Error");
-                                return;
-                        }
-                        screen.setText(String.valueOf(resultado));
-                        operator = "";
-
-                    }else if(text.equals("sin")){
-                        screen.setText(String.valueOf(Funciones.Sen(Double.parseDouble(screen.getText()))));
-                    }else if(text.equals("cos")){
-                        screen.setText(String.valueOf(Funciones.Cos(Double.parseDouble(screen.getText()))));
-                    }else if(text.equals("sqrt")){
-                        screen.setText(String.valueOf(Funciones.radical(Double.parseDouble(screen.getText()))));
-                    }else if(text.equals("tan")){
-                        screen.setText(String.valueOf(Funciones.tang(Double.parseDouble(screen.getText()))));
-                    }else if(text.equals("log")){
-                        screen.setText(String.valueOf(Funciones.Ln(Double.parseDouble(screen.getText()))));
-                    }else if(text.equals("sin-1")){
-                        screen.setText(String.valueOf(Funciones.Antsen(Double.parseDouble(screen.getText()))));
-                    }else if("+-*/".contains(text)){
+    
+                        }else if(text.equals("=")){
+                            double resultado = 0;
+                            double SecoundOperator = Double.parseDouble(screen.getText());
+    
+                            switch (operator) {
+                                case "+":   
+                                    resultado = Funciones.additon(PrimeOperand,SecoundOperator);
+                                    break;
+                                case "-":
+                                    resultado = Funciones.remaind(PrimeOperand,SecoundOperator);
+                                    break;
+                                case "*":
+                                    resultado = Funciones.multiply(PrimeOperand, SecoundOperator);
+                                    break;
+                                case "/":
+                                    resultado = Funciones.split(PrimeOperand, SecoundOperator);
+                                    break;
+                                case "x^n":
+                                    resultado = Funciones.Power(PrimeOperand, SecoundOperator);
+                                    break;
+                                default:
+                                    screen.setText("¡¡..Error opcion no valida..!!");
+                                    return;
+                            }
+                            screen.setText(String.valueOf(resultado));
+                            operator = "";
+    
+                        }else if(text.equals("sin")){
+                            screen.setText(String.valueOf(Funciones.Sen(Double.parseDouble(screen.getText()))));
+                        }else if(text.equals("cos")){
+                            screen.setText(String.valueOf(Funciones.Cos(Double.parseDouble(screen.getText()))));
+                        }else if(text.equals("sqrt")){
+                            screen.setText(String.valueOf(Funciones.radical(Double.parseDouble(screen.getText()))));
+                        }else if(text.equals("tan")){
+                            screen.setText(String.valueOf(Funciones.tang(Double.parseDouble(screen.getText()))));
+                        }else if(text.equals("log")){
+                            screen.setText(String.valueOf(Funciones.Ln(Double.parseDouble(screen.getText()))));
+                        }else if(text.equals("sin-1")){
+                            screen.setText(String.valueOf(Funciones.Antsen(Double.parseDouble(screen.getText()))));
+                        }else if(text.equals("cos-1")){
+                            screen.setText(String.valueOf(Funciones.Antcon(Double.parseDouble(screen.getText()))));
+                        }else if(text.equals("tan-1")){
+                            screen.setText(String.valueOf(Funciones.AntTangh(Double.parseDouble(screen.getText()))));
+                        }else if("+-*/x^n".contains(text)){
                             operator = text;
                             PrimeOperand = Double.parseDouble(screen.getText());
                             isOperatorSelected = true;
                         }
+                    }catch(NumberFormatException ex){
+                        screen.setText("...Error...");
+                    }
                    
                 }
             });
