@@ -36,7 +36,9 @@ public class Principal{
                 public void actionPerformed(ActionEvent e) {
                     switch (index) {
                         case 0:
-                            System.out.println("..aun no implemetada.");
+                            boton[index].setEnabled(!boton[index].isEnabled());
+                            Consola consola = new Consola();
+                            System.out.println(consola);
                             break;
                         case 1:
                             boton[index].setEnabled(!boton[index].isEnabled());
