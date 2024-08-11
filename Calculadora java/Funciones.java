@@ -16,10 +16,38 @@ public class Funciones{
     public static Double split(Double x, Double y){
         return x/y;
     }
+
+    public static Double Power(Double x){
+        return Math.pow(x, 2);
+    }
     
     public static Double Sen(Double x){
-        double value = Math.toDegrees(x);
+        Double value = Math.toRadians(x);
         return Math.sin(value);
         
+    }
+
+    public static Double Cos(Double x){
+        Double value = Math.toRadians(x);
+        return Math.cos(value);
+    }
+
+    public static Double radical(Double x){
+        return Math.sqrt(x);
+    }
+
+    public static Double tang(Double x){
+        Double value = Math.toRadians(x);
+        return Math.tan(value);
+    }
+
+    public static Double Ln(Double x){
+
+        Double value = Math.log10(x);
+        return value;
+    }
+
+    public static Double Antsen(Double x){
+        return Math.asin(x);
     }
 }

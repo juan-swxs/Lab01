@@ -11,21 +11,21 @@ public class Grafica extends JFrame{
     private JPanel panel; 
     private JPanel buttonPanel;
     private String operator = "";
-    private double PrimeOperand;
+    private double PrimeOperand = 0;
     private boolean isOperatorSelected = false;
     private JButton[] buttons;
     private JTextField screen;
     private String[] buttonLabels = {
-        "7", "8", "9", "/", 
+        "7", "8", "9", "AC", 
         "4", "5", "6", "*", 
         "1", "2", "3", "-", 
-        "0", ".", "=", "+"
+        "0", "/", "=", "+"
     };
     private String[] buttonMetric = {
         "sin", "cos", "tan", "%",
         "in", "log", "1/x", "x^n",
-        "√ ", "sin-1", "cos-1","tan-1",
-        "(",")", ",", "="
+        "sqrt", "sin-1", "cos-1","tan-1",
+        "(",")", ".", "="
     };
     private boolean isNumeric = true; 
 
@@ -108,6 +108,13 @@ public class Grafica extends JFrame{
                             isOperatorSelected = false;
                         }
                         screen.setText(screen.getText() + text);
+
+                    }else if(text.equals("AC")){
+                        screen.setText("");
+                        operator = "";
+                        PrimeOperand = 0;
+                        isOperatorSelected = false;
+
                     }else if(text.equals("=")){
                         double resultado = 0;
                         double SecoundOperator = Double.parseDouble(screen.getText());
@@ -134,7 +141,17 @@ public class Grafica extends JFrame{
 
                     }else if(text.equals("sin")){
                         screen.setText(String.valueOf(Funciones.Sen(Double.parseDouble(screen.getText()))));
-                    } else if("+-*/".contains(text)){
+                    }else if(text.equals("cos")){
+                        screen.setText(String.valueOf(Funciones.Cos(Double.parseDouble(screen.getText()))));
+                    }else if(text.equals("sqrt")){
+                        screen.setText(String.valueOf(Funciones.radical(Double.parseDouble(screen.getText()))));
+                    }else if(text.equals("tan")){
+                        screen.setText(String.valueOf(Funciones.tang(Double.parseDouble(screen.getText()))));
+                    }else if(text.equals("log")){
+                        screen.setText(String.valueOf(Funciones.Ln(Double.parseDouble(screen.getText()))));
+                    }else if(text.equals("sin-1")){
+                        screen.setText(String.valueOf(Funciones.Antsen(Double.parseDouble(screen.getText()))));
+                    }else if("+-*/".contains(text)){
                             operator = text;
                             PrimeOperand = Double.parseDouble(screen.getText());
                             isOperatorSelected = true;
