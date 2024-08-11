@@ -58,4 +58,8 @@ public class Funciones{
     public static Double AntTangh(Double x){
         return Math.atan(x);
     }
+
+    public static Double iva(Double x, Double y){
+        return (y * (x/100));
+    }
 }

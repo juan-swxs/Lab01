@@ -22,13 +22,12 @@ public class Grafica extends JFrame{
         "0", "/", "=", "+"
     };
     private String[] buttonMetric = {
-        "sin", "cos", "tan", "%",
+        "sin", "cos", "tan", "IVA",
         "in", "log", "1/x", "x^n",
         "sqrt", "sin-1", "cos-1","tan-1",
         "(",")", ".", "="
     };
     private boolean isNumeric = true; 
-
 
     public Grafica(){
 
@@ -135,6 +134,9 @@ public class Grafica extends JFrame{
                                 case "x^n":
                                     resultado = Funciones.Power(PrimeOperand, SecoundOperator);
                                     break;
+                                case "IVA":
+                                    resultado = Funciones.iva(PrimeOperand, SecoundOperator);
+                                    break;
                                 default:
                                     screen.setText("¡¡..Error opcion no valida..!!");
                                     return;
@@ -158,7 +160,7 @@ public class Grafica extends JFrame{
                             screen.setText(String.valueOf(Funciones.Antcon(Double.parseDouble(screen.getText()))));
                         }else if(text.equals("tan-1")){
                             screen.setText(String.valueOf(Funciones.AntTangh(Double.parseDouble(screen.getText()))));
-                        }else if("+-*/x^n".contains(text)){
+                        }else if("+-*/x^nIVA".contains(text)){
                             operator = text;
                             PrimeOperand = Double.parseDouble(screen.getText());
                             isOperatorSelected = true;
