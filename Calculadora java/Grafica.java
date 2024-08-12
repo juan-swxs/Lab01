@@ -44,9 +44,7 @@ public class Grafica extends JFrame{
         pantalla();
         Botones();
         ChangeButton();
-
     }
-
 
     private void Paneles(){
        panel = new JPanel();

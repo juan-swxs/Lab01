@@ -20,7 +20,7 @@ public class Principal{
 
         frame = new JFrame(titulo);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setBounds(500, 100, 400, 110);
+        frame.setBounds(500, 200, 400, 110);
         frame.setLayout(new BorderLayout());
 
         JPanel Panelbuttons = new JPanel();
