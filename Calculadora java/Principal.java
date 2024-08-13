@@ -1,4 +1,5 @@
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -31,6 +32,8 @@ public class Principal{
         for(int n = 0; n < nump; n++){
             final int index = n;
             boton[n] = new JButton(opciones[n]);
+            boton[n].setBackground(Color.darkGray);
+            boton[n].setForeground(Color.WHITE);
             boton[n].addActionListener(new ActionListener(){
                 @Override
                 public void actionPerformed(ActionEvent e) {
