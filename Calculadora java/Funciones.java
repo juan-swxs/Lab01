@@ -22,14 +22,12 @@ public class Funciones{
     }
     
     public static Double Sen(Double x){
-        Double value = Math.toRadians(x);
-        return Math.sin(value);
+        return Math.sin(Math.toRadians(x));
         
     }
 
     public static Double Cos(Double x){
-        Double value = Math.toRadians(x);
-        return Math.cos(value);
+        return Math.cos(Math.toRadians(x));
     }
 
     public static Double radical(Double x){
@@ -37,8 +35,7 @@ public class Funciones{
     }
 
     public static Double tang(Double x){
-        Double value = Math.toRadians(x);
-        return Math.tan(value);
+        return Math.tan(Math.toRadians(x));
     }
 
     public static Double Ln(Double x){
