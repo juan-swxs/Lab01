@@ -24,7 +24,7 @@ public class Grafica extends JFrame{
     private String[] buttonMetric = {
         "sin", "cos", "tan", "IVA",
         "in", "log", "1/x", "x^n",
-        "sqrt", "sin-1", "cos-1","tan-1",
+        "√", "sin-1", "cos-1","tan-1",
         "(",")", ".", "="
     };
     private boolean isNumeric = true; 
@@ -146,7 +146,7 @@ public class Grafica extends JFrame{
                             screen.setText(String.valueOf(Funciones.Sen(Double.parseDouble(screen.getText()))));
                         }else if(text.equals("cos")){
                             screen.setText(String.valueOf(Funciones.Cos(Double.parseDouble(screen.getText()))));
-                        }else if(text.equals("sqrt")){
+                        }else if(text.equals("√")){
                             screen.setText(String.valueOf(Funciones.radical(Double.parseDouble(screen.getText()))));
                         }else if(text.equals("tan")){
                             screen.setText(String.valueOf(Funciones.tang(Double.parseDouble(screen.getText()))));
