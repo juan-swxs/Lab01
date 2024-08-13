@@ -99,7 +99,7 @@ public class Grafica extends JFrame{
                     JButton hold_down = (JButton) e.getSource();
                     String text = hold_down.getText();
                     try{
-                        if("0123456789.".contains(text)){
+                        if("0123456789-.".contains(text)){
                             if(isOperatorSelected){
                                 screen.setText("");
                                 isOperatorSelected = false;
@@ -127,7 +127,12 @@ public class Grafica extends JFrame{
                                     resultado = Funciones.multiply(PrimeOperand, SecoundOperator);
                                     break;
                                 case "/":
-                                    resultado = Funciones.split(PrimeOperand, SecoundOperator);
+                                    if(SecoundOperator != 0){
+                                        resultado = Funciones.split(PrimeOperand, SecoundOperator);
+                                    }else{
+                                        screen.setText("Error: division por 0 no permitida");
+                                        return;
+                                    }
                                     break;
                                 case "x^n":
                                     resultado = Funciones.Power(PrimeOperand, SecoundOperator);
@@ -147,7 +152,11 @@ public class Grafica extends JFrame{
                         }else if(text.equals("cos")){
                             screen.setText(String.valueOf(Funciones.Cos(Double.parseDouble(screen.getText()))));
                         }else if(text.equals("√")){
-                            screen.setText(String.valueOf(Funciones.radical(Double.parseDouble(screen.getText()))));
+                            if(Double.parseDouble(screen.getText()) < 0){
+                                screen.setText("Error: Raíz cuadrada de un número negativo no es un número real.");
+                            }else{
+                                screen.setText(String.valueOf(Funciones.radical(Double.parseDouble(screen.getText()))));
+                            }  
                         }else if(text.equals("tan")){
                             screen.setText(String.valueOf(Funciones.tang(Double.parseDouble(screen.getText()))));
                         }else if(text.equals("log")){

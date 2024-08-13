@@ -41,7 +41,12 @@ public class Consola{
                             result = Funciones.tang(num1);
                             break;
                         case "sqrt":
-                            result = Funciones.radical(num1);
+                            if(num1 < 0){
+                                System.out.println("Error: Raíz cuadrada de un número negativo no es un número real");
+                                continue;
+                            }else{
+                                result = Funciones.radical(num1);
+                            }
                             break;
                         default:
                             System.out.println("Operador trigonometrico inválido. Use sin, cos, tan, o sqrt.");
