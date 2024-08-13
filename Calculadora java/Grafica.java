@@ -2,6 +2,8 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+
+import java.awt.Color;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -49,6 +51,8 @@ public class Grafica extends JFrame{
     private void Paneles(){
        panel = new JPanel();
 
+       panel.setBackground(Color.DARK_GRAY);
+
        panel.setLayout(null);
        this.getContentPane().add(panel);
 
@@ -57,6 +61,9 @@ public class Grafica extends JFrame{
     private void pantalla(){
         screen = new JTextField();
 
+        screen.setBackground(Color.GRAY);
+        screen.setForeground(Color.WHITE);
+
         screen.setBounds(50, 50, 300, 50);
 
         panel.add(screen);
@@ -64,14 +71,17 @@ public class Grafica extends JFrame{
 
     private void Botones(){
         buttonPanel = new JPanel();
+        buttonPanel.setBackground(Color.DARK_GRAY);
         buttonPanel.setLayout(new GridLayout(4, 4, 10, 10));
-        buttonPanel.setBounds(50, 100, 300, 300);
+        buttonPanel.setBounds(50, 110, 300, 300);
         ActualizeButton();
         panel.add(buttonPanel);
     }
 
     private void ChangeButton(){
         JButton Change = new JButton("to exchange");
+        Change.setBackground(Color.GRAY);
+        Change.setForeground(Color.WHITE);
         Change.setBounds(50, 420, 300, 30);
         Change.addActionListener(new ActionListener() {
             @Override
@@ -93,6 +103,9 @@ public class Grafica extends JFrame{
 
         for(int n = 0; n < condition.length ; n++){
             buttons[n] = new JButton(condition[n]);
+            buttons[n].setBackground(Color.GRAY);
+            buttons[n].setForeground(Color.WHITE);
+
             buttons[n].addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
